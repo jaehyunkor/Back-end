@@ -21,10 +21,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  # include 추가
 from time_missions.views import home  # home 뷰 가져오기
+from time_missions.views import ProductListAPI
 
 urlpatterns = [
     path('', home, name='home'),  # 홈 페이지 URL 설정
     path('time_missions/', include('time_missions.urls')),  # time_missions 앱의 URL 포함
     path('admin/', admin.site.urls),  # admin 페이지 URL 설정
+    path('api/mission/', ProductListAPI.as_view(), name='ProductListAPI'),  # as_view() 추가
 ]
 
