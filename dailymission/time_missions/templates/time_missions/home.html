@@ -1,0 +1,18 @@
+<!-- time_missions/templates/time_missions/home.html -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>미션 홈</title>
+</head>
+<body>
+    <h1>오늘의 미션</h1>
+    {% if mission %}
+        <h2>{{ mission.title }}</h2>
+        <p>{{ mission.description }}</p>
+    {% else %}
+        <p>현재 활성화된 미션이 없습니다.</p>
+    {% endif %}
+</body>
+</html>
