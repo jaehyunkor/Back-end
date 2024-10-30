@@ -35,33 +35,9 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_COOKIE_NAME = 'XSRF-TOKEN'
-CSRF_HEADER_NAME = 'X-XSRF-TOKEN'
-
 CSRF_TRUSTED_ORIGINS = (
     'http://localhost:3000',
     'http://127.0.0.1:8000',
-)
-
-CORS_ALLOW_HEADERS = (
-    'access-control-allow-credentials',
-    'access-control-allow-origin',
-    'access-control-request-method',
-    'access-control-request-headers',
-    'accept',
-    'accept-encoding',
-    'accept-language',
-    'authorization',
-    'connection',
-    'content-type',
-    'dnt',
-    'credentials',
-    'host',
-    'origin',
-    'user-agent',
-    'X-CSRFToken',
-    'csrftoken',
-    'x-requested-with',
 )
 
 # Application definition
