@@ -22,6 +22,17 @@ class PostListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user if self.request.user.is_authenticated else None)
 
+    @method_decorator(csrf_exempt)  # CSRF 검사를 비활성화
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def get_queryset(self):
+        # 특정 게시판 ID로 필터링 가능
+        board_id = self.request.query_params.get('board_id')
+        if board_id:
+            return Post.objects.filter(board_id=board_id)
+        return Post.objects.all()
+
 @method_decorator(csrf_exempt, name='dispatch')
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
