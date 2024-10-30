@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, generics, permissions
 from .models import Board, Post, ImagePost, Comment
 from .serializers import BoardSerializer, PostSerializer, ImagePostSerializer, CommentSerializer
 from django.views.generic import ListView
@@ -12,6 +12,22 @@ class BoardViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class PostListCreateView(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # 읽기는 모든 사용자, 쓰기는 인증된 사용자만 가능
+
+    def perform_create(self, serializer):
+        # 새 게시글 생성 시 자동으로 현재 사용자(author)로 설정
+        serializer.save(author=self.request.user)
+
+    def get_queryset(self):
+        # 특정 게시판 ID로 필터링 가능
+        board_id = self.request.query_params.get('board_id')
+        if board_id:
+            return Post.objects.filter(board_id=board_id)
+        return Post.objects.all()
 
 
 @method_decorator(csrf_exempt, name='dispatch')
