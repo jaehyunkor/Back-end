@@ -22,6 +22,10 @@ class PostListCreateView(generics.ListCreateAPIView):
         # 새 게시글 생성 시 자동으로 현재 사용자(author)로 설정
         serializer.save(author=self.request.user)
 
+    @method_decorator(csrf_exempt)  # CSRF 검사를 비활성화
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def get_queryset(self):
         # 특정 게시판 ID로 필터링 가능
         board_id = self.request.query_params.get('board_id')
