@@ -145,6 +145,7 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',  # 웹 브라우저 API 렌더러 활성화
+        'rest_framework.authentication.TokenAuthentication',  # 토큰 인증만 사용
     ],
 }
 
