@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['3.37.149.179', 'localhost', '172.31.12.96', '172.0.0.1']
 
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
