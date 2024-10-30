@@ -28,8 +28,14 @@ DEBUG = True
 ALLOWED_HOSTS = ['3.37.149.179', 'localhost', '172.31.12.96', '172.0.0.1']
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React 앱의 URL
+    "http://localhost:3000",# React 앱의 URL
+    "http://3.37.149.179:8000",
 ]
+
+CSRF_TRUSTED_ORIGINS = (
+    'http://localhost:3000',
+    'http://127.0.0.1:8000',
+)
 
 # Application definition
 

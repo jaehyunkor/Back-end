@@ -4,12 +4,12 @@ from .models import Board, Post, ImagePost, Comment
 from .serializers import BoardSerializer, PostSerializer, ImagePostSerializer, CommentSerializer
 from django.views.generic import ListView
 from django.views.decorators.csrf import csrf_exempt
-@csrf_exempt
+
 class BoardViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-@csrf_exempt
+
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -23,7 +23,7 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         board = serializer.validated_data['board']
         serializer.save(author=self.request.user)
-@csrf_exempt
+
 class ImagePostViewSet(viewsets.ModelViewSet):
     queryset = ImagePost.objects.all()
     serializer_class = ImagePostSerializer
