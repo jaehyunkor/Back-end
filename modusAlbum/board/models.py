@@ -19,7 +19,7 @@ class Board(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    #author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     board = models.ForeignKey(Board, related_name='posts', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

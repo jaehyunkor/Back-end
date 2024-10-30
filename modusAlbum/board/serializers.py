@@ -13,7 +13,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'content', 'author', 'board', 'created_at']
+        fields = ['id', 'title', 'content', 'board', 'created_at']
         read_only_fields = ['author', 'created_at']
 
 class ImagePostSerializer(serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class ImagePostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ImagePost
-        fields = ['id', 'image', 'content', 'author', 'board', 'created_at']
+        fields = ['id', 'image', 'content', 'board', 'created_at']
 
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')

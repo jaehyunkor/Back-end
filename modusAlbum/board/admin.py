@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import Board, Post, ImagePost
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'board', 'created_at')
+    list_display = ('title', 'board', 'created_at')
     search_fields = ('title', 'content')
-    list_filter = ('board', 'author')
+    list_filter = ('board',)
     ordering = ('-created_at',)
 
 class ImagePostAdmin(admin.ModelAdmin):
