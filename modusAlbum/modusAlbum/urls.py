@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from board.views import BoardViewSet, PostViewSet, ImagePostViewSet, CommentViewSet, PostListCreateView
+from board.views import BoardViewSet, PostViewSet, ImagePostViewSet, CommentViewSet, PostListCreateView, ImagePostListView
 
 router = DefaultRouter()
 router.register(r'boards', BoardViewSet, basename='board')
@@ -30,7 +30,7 @@ router.register(r'comments', CommentViewSet, basename='comment')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-path('api/posts/', PostListCreateView.as_view(), name='post-list-create'),
+    path('api/posts/', PostListCreateView.as_view(), name='post-list-create'),
     path('image-posts/', ImagePostListView.as_view(), name='image-posts'),
 ]
 
