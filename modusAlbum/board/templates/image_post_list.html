@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .post {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Posts</h1>
+    <div>
+        {% for post in image_posts %}
+            <div class="post">
+                <h2>Posted by: {{ post.author.username }}</h2>
+                <img src="{{ post.image.url }}" alt="Image Post">
+                <p>Uploaded at: {{ post.created_at }}</p>
+            </div>
+        {% empty %}
+            <p>No image posts available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
