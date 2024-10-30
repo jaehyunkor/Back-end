@@ -7,5 +7,3 @@ myenv/
 *.sqlite3
 *.log
 .env
-
-*.pem
