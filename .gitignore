@@ -7,3 +7,5 @@ myenv/
 *.sqlite3
 *.log
 .env
+
+.idea/
