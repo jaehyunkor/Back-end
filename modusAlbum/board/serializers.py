@@ -8,7 +8,7 @@ class BoardSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'board_type']
 
 class PostSerializer(serializers.ModelSerializer):
-    #author = serializers.ReadOnlyField(source='author.username')
+    author = serializers.ReadOnlyField(source='author.username')
     board = serializers.PrimaryKeyRelatedField(queryset=Board.objects.all())
 
     class Meta:
